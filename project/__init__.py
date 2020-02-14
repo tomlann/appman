@@ -1,3 +1,5 @@
+import os 
+
 from flask import Flask__
 from flask_sqlalchemy import SQLAlchemy
 

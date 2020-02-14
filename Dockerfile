@@ -5,4 +5,4 @@ COPY . ./
 RUN pip install Flask gunicorn
 RUN pip install flask-sqlalchemy flask-login
 RUN pip install -r requirements.txt
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app python wsgi.py
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 wsgi.py

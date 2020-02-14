@@ -1,6 +1,6 @@
 import os 
 
-from flask import Flask__
+from flask import Flask, g
 from flask_sqlalchemy import SQLAlchemy
 
 # init SQLAlchemy so we can use it later in our models

@@ -1,7 +1,12 @@
 FROM python:3.7-slim
-COPY . /app
-WORKDIR /app
+
+COPY . /application
+WORKDIR /application
+
 RUN pip install -r requirements.txt
 RUN pip install flask-sqlalchemy flask-login
-ENTRYPOINT ["python"]
-CMD ["wsgi.py"]
+RUN pip install Flask gunicorn
+
+CMD ["python","wsgi.py"]
+ENTRYPOINT ["gunicorn"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app

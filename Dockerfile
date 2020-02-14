@@ -6,4 +6,4 @@ WORKDIR /app
 RUN pip install Flask gunicorn
 RUN pip install flask-sqlalchemy flask-login
 RUN pip install -r requirements.txt
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 app:app 
+CMD exec gunicorn -b 0.0.0.0:8080 wsgi.py

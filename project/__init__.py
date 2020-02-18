@@ -4,16 +4,23 @@ from flask import Flask, g
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-# init SQLAlchemy so we can use it later in our models
-db = SQLAlchemy()
+db = sqlalchemy.create_engine(
+# Equivalent URL:
+# mysql+pymysql://<db_user>:<db_pass>@/<db_name>?unix_socket=/cloudsql/<cloud_sql_instance_name>
+    sqlalchemy.engine.url.URL(
+        drivername="mysql+pymysql",
+        username=bigbro,
+        password=bigbro27,
+        database=pymodel10,
+        query={"unix_socket": "/cloudsql/{}".format(prefab-envoy-267720:us-central1:hopethisworks)},
+    ),
+    # ... Specify additional properties here.
+    # ...
+)
 
+# init SQLAlchemy so we can use it later in our models
 def create_app():
     app = Flask(__name__)
-
-    app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
 
     db.init_app(app)
     login_manager = LoginManager()

@@ -14,14 +14,8 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+pymysql://{nam}:{pas}@localhost/{dbn}?unix_socket=/cloudsql/{con}').format (
-    nam=db_user,
-    pas=db_pass,
-    dbn=db_name,
-    con=cloud_sql_connection_name,
-)
-    
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root@/guestbook?unix_socket=/cloudsql/prefab-envoy-267720:us-central1:cloud-sql-loves-mysql'
+
     db.init_app(app)
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'

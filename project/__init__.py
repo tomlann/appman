@@ -14,7 +14,7 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<db_user>:<db_pass>@/<db_name>?unix_socket=/cloudsql/<cloud_sql_instance_name>'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://thebest:coolman@/guestbook?unix_socket=/cloudsql/prefab-envoy-267720:us-central1:cloud-sql-loves-mysql'
     
     db.init_app(app)
     login_manager = LoginManager()

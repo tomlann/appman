@@ -9,12 +9,11 @@ db_pass = os.environ.get("DB_PASS")
 db_name = os.environ.get("DB_NAME")
 cloud_sql_connection_name = os.environ.get("CLOUD_SQL_CONNECTION_NAME")
 
-db = SQLAlchemy()
+db = SQLAlchemy (app)
 # init SQLAlchemy so we can use it later in our models
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://thebest:coolman@localhost/guestbook?unix_socket=/cloudsql/prefab-envoy-267720:us-central1:cloud-sql-loves-mysql'
-    db = SQLAlchemy (app)
 
     db.init_app(app)
     login_manager = LoginManager()
